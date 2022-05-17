@@ -16,6 +16,14 @@ spec:
         - name: productorder-k8s
           image: 19990106/ctse-productorder-k8s:latest
           imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "100"
+            requests:
+              cpu: "100"
+          args:
+          - -cpus
+          - "2"
           ports:
             - containerPort: 3000
       tolerations:
