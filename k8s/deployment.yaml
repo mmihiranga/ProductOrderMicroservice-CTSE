@@ -10,11 +10,11 @@ spec:
   template:
     metadata:
       labels:
-        app: productOrder-k8s
+        app: productorder-k8s
     spec:
       containers:
-        - name: productOrder-k8s
-          image: 19990106/ctse-productOrder-k8s:latest
+        - name: productorder-k8s
+          image: 19990106/ctse-productorder-k8s:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3000

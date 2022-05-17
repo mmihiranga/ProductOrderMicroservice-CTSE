@@ -33,7 +33,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/ctse-productOrder-k8s
+        tags: ${{ secrets.DOCKER_USERNAME }}/ctse-productorder-k8s
 
     # Setup gcloud CLI and Get the GKE Credentials to Deploy 
     - uses: actions/checkout@master
@@ -45,6 +45,6 @@ jobs:
         CLUSTER_NAME: testkubecluster
         ZONE_NAME: us-central1-c
       with:
-        args:  apply -f k8s/ | kubectl get svc | kubectl rollout restart deployment/productOrder-k8s
+        args:  apply -f k8s/ | kubectl get svc | kubectl rollout restart deployment/productorder-k8s
     
 
