@@ -18,7 +18,7 @@ app.use(fileUpload({
 connectDB();
 
 app.get("/", (req, res) => {
-    res.send("Hello Node JS!");
+    res.send("Hello Node !");
 });
 
 app.use("/order", OrderAPI());
