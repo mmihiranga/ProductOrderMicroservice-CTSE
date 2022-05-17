@@ -35,6 +35,18 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/ctse-productorder-k8s
 
+
+    - name: Build and push
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        file: ./Dockerfile
+        builder: ${{ steps.buildx.outputs.name }}
+        push: true
+        tags: ${{ secrets.DOCKER_USERNAME }}/ctse-productorder-k8s
+        cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/ctse-productorder-k8s:buildcache
+        cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/ctse-productorder-k8s:buildcache,mode=max
+
     # Setup gcloud CLI and Get the GKE Credentials to Deploy 
     - uses: actions/checkout@master
     - name: kubectl - Google Cloud GKE cluster.
