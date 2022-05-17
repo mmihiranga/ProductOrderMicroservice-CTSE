@@ -10,13 +10,6 @@ on:
     branches:
       - main
 
-env:
-  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-  GKE_CLUSTER: testkubecluster  # TODO: update to cluster name
-  GKE_ZONE: us-central1-c	   # TODO: update to cluster zone
-  DEPLOYMENT_NAME: userbackend-k8s # TODO: update deployment name if changed in deployment.yaml
-  IMAGE: static-site
-
 jobs:
   setup-build-publish-deploy:
     name: Setup, Build, Publish, and Deploy
@@ -40,18 +33,18 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/ctse-userbackend-k8s
+        tags: ${{ secrets.DOCKER_USERNAME }}/ctse-productOrder-k8s
 
     # Setup gcloud CLI and Get the GKE Credentials to Deploy 
     - uses: actions/checkout@master
     - name: kubectl - Google Cloud GKE cluster.
       uses: ameydev/gke-kubectl-action@master
       env:
-        PROJECT_ID: airy-dialect-342617
+        PROJECT_ID: ${{ secrets.GKE_PROJECT }}
         APPLICATION_CREDENTIALS: ${{ secrets.GKE_SA_KEY }}
         CLUSTER_NAME: testkubecluster
         ZONE_NAME: us-central1-c
       with:
-        args:  apply -f k8s/ | kubectl get svc | kubectl rollout restart deployment/userbackend-k8s
+        args:  apply -f k8s/ | kubectl get svc | kubectl rollout restart deployment/productOrder-k8s
     
 
