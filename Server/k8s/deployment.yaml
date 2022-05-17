@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userbackend-k8s
+spec:
+  selector:
+    matchLabels:
+      app: userbackend-k8s
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: userbackend-k8s
+    spec:
+      containers:
+        - name: userbackend-k8s
+          image: 19990106/testkube:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+      tolerations:
+        - key: "key"
+          operator: "Exists"
+          effect: "NoSchedule"
