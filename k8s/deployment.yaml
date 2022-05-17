@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: userbackend-k8s
+  name: productorder-k8s
 spec:
   selector:
     matchLabels:
-      app: userbackend-k8s
+      app: productorder-k8s
   replicas: 2
   template:
     metadata:
