@@ -52,6 +52,6 @@ jobs:
         CLUSTER_NAME: testkubecluster
         ZONE_NAME: us-central1-c
       with:
-        args:  apply -f k8s/ | kubectl get svc | kubectl rollout restart deployment/userbackend-k8s
+        args:  apply -f k8s/ | kubectl get deployment
     
 
