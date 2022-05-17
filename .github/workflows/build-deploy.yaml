@@ -14,7 +14,7 @@ on:
   
 defaults:
   run:
-    working-directory: ./server
+    working-directory: ./Server
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
@@ -44,7 +44,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
-        file: server/Dockerfile
+        file: .Server/Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/testkube
 
@@ -58,6 +58,6 @@ jobs:
         CLUSTER_NAME: testkubecluster
         ZONE_NAME: us-central1-c
       with:
-        args:  apply -f k8s/ | kubectl get svc | kubectl rollout restart deployment/nestjs-k8s
+        args:  apply -f k8s/ | kubectl get svc | kubectl rollout restart deployment/userbackend-k8s
     
 
