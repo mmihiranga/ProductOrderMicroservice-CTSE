@@ -1,8 +1,6 @@
 FROM node:18-alpine3.14
 
-RUN mkdir -p /usr/src/app
-
-WORKDIR /usr/src/app
+WORKDIR Server/usr/src/app
 
 COPY package*.json ./
 
