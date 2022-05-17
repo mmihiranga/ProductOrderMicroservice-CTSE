@@ -1,7 +1,5 @@
 FROM node:18-alpine3.14
 
-COPY . /usr/src/app
-
 WORKDIR /usr/src/app
 
 COPY package*.json ./
