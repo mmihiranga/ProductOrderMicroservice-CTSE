@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: userbackend-k8s
-          image: 19990106/testkube:latest
+          image: 19990106/ctse-userbackend-k8s:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3000

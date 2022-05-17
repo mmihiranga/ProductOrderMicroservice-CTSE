@@ -40,7 +40,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/testkube
+        tags: ${{ secrets.DOCKER_USERNAME }}/ctse-userbackend-k8s
 
     # Setup gcloud CLI and Get the GKE Credentials to Deploy 
     - uses: actions/checkout@master
